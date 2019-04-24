@@ -1,10 +1,12 @@
-﻿var basemap;
-//Create the Leaflet map
+﻿// Adding the base map
+var basemap;
+
+//Begine function create map
 function createMap(){
     //create the map
-    var map = L.map('mapid', {
-        center: [41.257160, -95.995102],
-        zoom:4.5,
+    var map = L.map('map', {
+        center: [32.00903, 118.6969],
+        zoom:10,
 		minzoom:2,
 		maxzoom:18
     });
@@ -13,7 +15,6 @@ function createMap(){
     basemap = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
-
-    //calling the getData function
-    getData(map);
 };
+//Begine function create map
+$(document).ready(createMap);
