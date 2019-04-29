@@ -20,14 +20,13 @@ function createMap(){
 
 
 //Loading geoJson data file
-
-function addDataToMap(data, map) {
-    var dataLayer = L.geoJson(data);
-    dataLayer.addTo(map);
-}
-
-$.getJSON("data/popular_POIs_AOIs_corrected.geojson", function(data) {addDataToMap(data, map); });
-
-
+$.getJSON("popular_POIs_AOIs_corrected.geojson",function(data){
+    // add GeoJSON layer to the map once the file is loaded
+    L.geoJson(data,{
+		onEachFeature:function(feature, layer){
+			layer.bindPopup(feature.properties.name);
+		}
+	}).addTo(map);
+});
 
 $(document).ready(createMap);
