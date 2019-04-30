@@ -1,15 +1,33 @@
 ﻿
-
-
-#map {
-	height: 750px;
-	width: 100%;
-	display: inline-block;
-}
-
 .leaflet-popup-content{
 	width:90px;
 	height:20px;
 	color:blue;
 	fill:red;
+}
+
+html {
+	width: 98%;
+	height: 98%
+}
+
+body {
+	width: 100%;
+	height: 100%
+}
+
+#map {
+	height: 100%;
+	width: 75%;
+	float: right
+}
+
+#menu {
+	position: absolute;
+	width: 24%;
+	height: 98%;
+	display: inline-block;
+	vertical-align:top;
+	text-align:left;
+	line-height: 16px
 }
