@@ -1,5 +1,15 @@
-﻿#map {
+﻿
+
+
+#map {
 	height: 750px;
 	width: 100%;
 	display: inline-block;
+}
+
+.leaflet-popup-content{
+	width:90px;
+	height:20px;
+	color:blue;
+	fill:red;
 }
