@@ -30,7 +30,7 @@ function getData (map){
 		L.geoJson(data,{
 			onEachFeature:function(feature, layer){
 				layer.bindPopup(feature.properties.name);
-				
+				console.log(feature.properties)
 			}
 		}).addTo(map);
 	});
