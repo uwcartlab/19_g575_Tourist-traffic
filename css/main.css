@@ -54,3 +54,9 @@ h4{
 	font-weight:bold;
 	font-size:15px;
 }
+
+.search-button{
+	height:20px;
+	width:100px;
+	box-shadow: 1px 0px 1px black;
+}
