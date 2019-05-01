@@ -55,7 +55,7 @@ h4{
 	font-size:15px;
 }
 
-.search-alert{
+.leaflet-control-search leaflet-control{
 	height:200px;
 	width:100px;
 	box-shadow: 1px 0px 1px black;
