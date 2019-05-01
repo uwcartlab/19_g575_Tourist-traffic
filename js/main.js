@@ -48,18 +48,27 @@ function getData (map){
 				mouseout: function(){
 					this.closePopup();
 				}
-			});
+			}).addTo(map);
 				console.log(feature.properties)
 			}
-		}).addTo(map);
+		});
 		
 		//create filter by using leaflet default filter function
 		var overlayMaps = {
 			"PointOfInterest": dataLayer
 		};		
 		L.control.layers(null, overlayMaps).addTo(map);
-		createSearchOperator(map, data);
+		
 		//create search operator
+		createSearchOperator(map, data);
+		
+/* 		//create a L.markerClusterGroup layer
+		var markers = L.markerClusterGroup();
+		//add geojson to marker cluster layer
+		markers.addLayer(dataLayer);
+		//add marker cluster layer to map
+		map.addLayer(markers);
+		markerCluster(map); */
 		
 	});
 };
@@ -94,6 +103,22 @@ function createSearchOperator(map, featCollection){
     });
 	
 	map.addControl( searchControl ); 
+};
+
+//function to create marker cluster
+function markerCluster(map){
+	var markers = L.markerClusterGroup({
+		maxClusterRadius: 120,
+		iconCreatefunction: function(cluster){
+			var markers = cluster.getAllChildMarkers();
+			var n = 0;
+			for (var i = 0; i < markers.length; i++){
+				n += markers[i].number;
+			}
+			return L.divIcon({ html: n, className: 'mycluster', iconSize: L.point(40, 40) });
+		},
+		spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: false
+	});
 };
 
 $(document).ready(createMap);
