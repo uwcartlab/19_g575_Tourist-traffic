@@ -27,7 +27,7 @@ function getData (map){
 	
     // Add GeoJSON layer to the map once the file is loaded
 
-		L.geoJson(data,{
+		var dataLayer = L.geoJson(data,{
 			
 		// Change Leaflet default markers to circles
 			pointToLayer: function(feature, latlng) {
@@ -52,6 +52,48 @@ function getData (map){
 				console.log(feature.properties)
 			}
 		}).addTo(map);
+		
+		//create filter by using leaflet default filter function
+		var overlayMaps = {
+			"PointOfInterest": dataLayer
+		};		
+		L.control.layers(null, overlayMaps).addTo(map);
+		createSearchOperator(map, data);
+		//create search operator
+		
 	});
 };
+
+
+//function to create search operator
+function createSearchOperator(map, featCollection){
+	//create search layer
+	var featuresLayer = new L.LayerGroup({
+		style: function(feature) {
+			return {color: feature.properties.color }
+		},
+	});
+
+	map.eachLayer(function(layer){
+		featuresLayer.addLayer(layer);
+	});
+	map.addLayer(featuresLayer);
+
+	//create search control
+	var searchControl = new L.Control.Search({
+		layer: featuresLayer,
+		propertyName: "name",
+		marker: false,
+		zoom: 15,
+	});
+	
+	searchControl.on('search:locationfound', function(e) {
+		e.layer.openPopup();
+	}).on('search_collapsed', function(e) {
+        featuresLayer.resetStyle(layer);
+    });
+	
+	map.addControl( searchControl ); 
+};
+
 $(document).ready(createMap);
