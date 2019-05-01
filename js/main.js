@@ -5,7 +5,7 @@ var basemap;
 function createMap(){
     //create the map
     var map = L.map('map', {
-        center: [32.00903, 118.6969],
+        center: [32.00983, 118.7969],
         zoom:12,
 		minzoom:2,
 		maxzoom:18
@@ -33,7 +33,7 @@ function getData (map){
 			pointToLayer: function(feature, latlng) {
 				return new L.CircleMarker(latlng, {
 				  radius: 5,
-				  color: "green",
+				  color: "red",
 				  weight: 1
 				});
 			  },
