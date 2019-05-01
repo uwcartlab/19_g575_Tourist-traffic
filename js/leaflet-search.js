@@ -1,39 +1,3 @@
-/*
-	Name					Data passed			   Description
-
-	Managed Events:
-	 search:locationfound	{latlng, title, layer} fired after moved and show markerLocation
-	 search:expanded		{}					   fired after control was expanded
-	 search:collapsed		{}					   fired after control was collapsed
- 	 search:cancel			{}					   fired after cancel button clicked
-
-	Public methods:
-	 setLayer()				L.LayerGroup()         set layer search at runtime
-	 showAlert()            'Text message'         show alert message
-	 searchText()			'Text searched'        search text by external code
-*/
-
-//TODO implement can do research on multiple sources layers and remote		
-//TODO history: false,		//show latest searches in tooltip		
-//FIXME option condition problem {autoCollapse: true, markerLocation: true} not show location
-//FIXME option condition problem {autoCollapse: false }
-//
-//TODO here insert function  search inputText FIRST in _recordsCache keys and if not find results.. 
-//  run one of callbacks search(sourceData,jsonpUrl or options.layer) and run this.showTooltip
-//
-//TODO change structure of _recordsCache
-//	like this: _recordsCache = {"text-key1": {loc:[lat,lng], ..other attributes.. }, {"text-key2": {loc:[lat,lng]}...}, ...}
-//	in this mode every record can have a free structure of attributes, only 'loc' is required
-//TODO important optimization!!! always append data in this._recordsCache
-//  now _recordsCache content is emptied and replaced with new data founded
-//  always appending data on _recordsCache give the possibility of caching ajax, jsonp and layersearch!
-//
-//TODO here insert function  search inputText FIRST in _recordsCache keys and if not find results.. 
-//  run one of callbacks search(sourceData,jsonpUrl or options.layer) and run this.showTooltip
-//
-//TODO change structure of _recordsCache
-//	like this: _recordsCache = {"text-key1": {loc:[lat,lng], ..other attributes.. }, {"text-key2": {loc:[lat,lng]}...}, ...}
-//	in this way every record can have a free structure of attributes, only 'loc' is required
 
 (function (factory) {
     if(typeof define === 'function' && define.amd) {
