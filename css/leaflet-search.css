@@ -2,6 +2,8 @@
 .leaflet-container .leaflet-control-search {
 	position:relative;
 	float:left;
+	width:100px;
+	height:30px;
 	background:#fff;
 	color:#1978cf;
 	border: 2px solid rgba(0,0,0,0.2);
