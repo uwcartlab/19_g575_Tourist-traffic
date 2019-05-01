@@ -27,9 +27,12 @@ function getData (map){
 	$.getJSON("data/popular_POIs_AOIs_corrected.geojson",function(data){
 	
     // Add GeoJSON layer to the map once the file is loaded
-
+		//create datalayer for all the POIs
 		var dataLayer = L.geoJson(data,{
 			
+			filter: function(feature, layer){
+				return(feature.properties.level === "-");
+			},			
 		// Change Leaflet default markers to circles
 			pointToLayer: function(feature, latlng) {
 				return new L.CircleMarker(latlng, {
@@ -54,9 +57,52 @@ function getData (map){
 			}
 		});
 		
+		//create datalayer for 5A景区
+		var data_level_5A = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.level === "5A景区");
+			},
+			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		
+		//create datalayer for 4A景区
+		var data_level_4A = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.level === "4A景区");
+			},
+			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+
+		
 		//create filter by using leaflet default filter function
 		var overlayMaps = {
-			"PointOfInterest": dataLayer
+			"PointOfInterest": dataLayer,
+			"5A景区": data_level_5A,
+			"4A景区": data_level_4A
 		};		
 		L.control.layers(null, overlayMaps).addTo(map);
 		
