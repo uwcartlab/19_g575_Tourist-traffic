@@ -2,8 +2,6 @@
 .leaflet-container .leaflet-control-search {
 	position:relative;
 	float:left;
-	width:100px;
-	height:30px;
 	background:#fff;
 	color:#1978cf;
 	border: 2px solid rgba(0,0,0,0.2);
@@ -19,7 +17,9 @@
 .leaflet-control-search.search-exp {/*expanded*/
 	background: #fff;
 	border: 2px solid rgba(0,0,0,0.2);
-	background-clip: padding-box;	
+	background-clip: padding-box;
+	width:100px;
+	height:30px;
 }
 .leaflet-control-search .search-input {
 	display:block;
