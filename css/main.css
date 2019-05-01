@@ -1,8 +1,7 @@
 ﻿
-
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
-    	background: black;
+    background: black;
 	color:white;
 	font-size:18px;
 	height:50px;
@@ -27,35 +26,28 @@ body {
 
 #map {
 	height: 100%;
-	width: 74%;
+	width: 79%;
 	float: right;
 	border: 1px solid maroon;
-    	box-shadow: 1px 0px 1px black;
+    box-shadow: 1px 0px 1px black;
 	border-radius:2px;
 	z-index: 20;
 }
 
 #menu {
 	position: absolute;
-	width: 24%;
+	width: 20%;
 	height: 98%;
 	display: inline-block;
 	vertical-align:top;
 	text-align:left;
-	line-height: 16px;
 	border: 1px solid maroon;
-    	box-shadow: 1px 0px 1px black;
+    box-shadow: 1px 0px 1px black;
 	border-radius:2px;
 	z-index: 20;
 }
-// This will be deleted later
 h4{
 	text-align:center;
 	font-weight:bold;
 	font-size:15px;
-}
-
-.leaflet-control-layers-selector{
-	Color:blue;
-	border:1px solid maroon;
 }
