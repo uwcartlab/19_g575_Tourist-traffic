@@ -1,13 +1,22 @@
 ﻿
-.leaflet-popup-content{
-	width:90px;
-	height:20px;
-	color:blue;
-	fill:red;
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    	background: black;
+	color:white;
+	font-size:18px;
+	height:50px;
+	width:220px;
+	text-align:center;
+	vertical-align:center;
+	border-left:2px solid red;
+	border-right:2px solid red;
+	border-top:2px solid red;
+	border-bottom:2px solid red;
 }
 
 html {
-	width: 98%;
+	width: 99%;
 	height: 98%
 }
 
@@ -18,8 +27,12 @@ body {
 
 #map {
 	height: 100%;
-	width: 75%;
-	float: right
+	width: 79%;
+	float: right;
+	border: 1px solid maroon;
+    	box-shadow: 1px 0px 1px black;
+	border-radius:2px;
+	z-index: 20;
 }
 
 #menu {
@@ -29,5 +42,15 @@ body {
 	display: inline-block;
 	vertical-align:top;
 	text-align:left;
-	line-height: 16px
+	line-height: 16px;
+	border: 1px solid maroon;
+    	box-shadow: 1px 0px 1px black;
+	border-radius:2px;
+	z-index: 20;
+}
+// This will be deleted later
+h4{
+	text-align:center;
+	font-weight:bold;
+	font-size:15px;
 }
