@@ -30,7 +30,7 @@ body {
 	width: 79%;
 	float: right;
 	border: -2px solid #f4f0e7;
-    box-shadow: 4px 1px 5px black;
+    	box-shadow: 4px 1px 5px black;
 	border-radius:1px;
 	z-index: 20;
 }
@@ -39,6 +39,7 @@ body {
 	position: absolute;
 	width: 21%;
 	height: 98%;
+	border:2px solid #f4f0e7;
 	display: inline-block;
 	vertical-align:top;
 	text-align:justify;
