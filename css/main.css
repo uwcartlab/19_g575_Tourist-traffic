@@ -30,7 +30,7 @@ body {
 	width: 78%;
 	float: right;
 	border: -2px solid #f4f0e7;
-    	box-shadow: 4px 1px 5px black;
+    	box-shadow: -1px -1px 6px maroon;
 	border-radius:1px;
 	z-index: 20;
 }
@@ -39,12 +39,13 @@ body {
 	position: absolute;
 	width: 21%;
 	height: 98%;
-	border:2px solid #f4f0e7;
+	border-left:5px solid #f4f0e7;
+	border-right:5px solid #f4f0e7;
 	display: inline-block;
 	vertical-align:top;
 	text-align:justify;
-    	box-shadow: -2px -2px 2px #f4f0e7;
-	border-radius:2px;
+    	box-shadow: -1px -1px 6px maroon;
+	border-radius:0px;
 	z-index: 20;
 	background:#f4f0e7;
 }
