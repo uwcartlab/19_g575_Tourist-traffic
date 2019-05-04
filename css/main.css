@@ -42,7 +42,6 @@ body {
 	display: inline-block;
 	vertical-align:top;
 	text-align:justify;
-	border: 1px solid #f4f0e7;
     	box-shadow: -2px -2px 2px #f4f0e7;
 	border-radius:2px;
 	z-index: 20;
