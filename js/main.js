@@ -52,17 +52,20 @@ function getData (map){
 			filter: function(feature, layer){
 				return(feature.properties.level === "5A景区");
 			},
-			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
-				mouseover: function(){
-					this.openPopup();
-				},
-				mouseout: function(){
-					this.closePopup();
-				}
+					mouseover: function(){
+						this.openPopup();
+					},
+					mouseout: function(){
+						this.closePopup();
+					},
+					click: function(){
+						$("#menu").html(menuContent);
+					}
 				})
 			}
 		}).addTo(map);
@@ -74,15 +77,19 @@ function getData (map){
 			},
 			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
-				mouseover: function(){
-					this.openPopup();
-				},
-				mouseout: function(){
-					this.closePopup();
-				}
+					mouseover: function(){
+						this.openPopup();
+					},
+					mouseout: function(){
+						this.closePopup();
+					},
+					click: function(){
+						$("#menu").html(menuContent);
+					}
 				})
 			}
 		}).addTo(map);
@@ -111,6 +118,8 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
+				console.log(feature.properties)
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -119,6 +128,9 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
+				},
+				click: function(){
+					$("#menu").html(menuContent);
 				}
 				})
 			}
@@ -136,6 +148,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -144,7 +157,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -161,6 +177,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -169,7 +186,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -186,6 +206,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -194,7 +215,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -211,6 +235,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -219,7 +244,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -236,6 +264,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -244,7 +273,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -261,6 +293,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -269,7 +302,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -286,6 +322,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -294,7 +331,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -311,6 +351,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -319,7 +360,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -336,6 +380,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -344,7 +389,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -361,6 +409,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -369,7 +418,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -386,6 +438,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -394,7 +447,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -411,6 +467,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -419,7 +476,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
@@ -436,6 +496,7 @@ function getData (map){
 				});
 			  },			
 			onEachFeature:function(feature, layer){
+				var menuContent = "<p><b>Name:</b> " + feature.properties.name + "<p><b>Address:</b> " + feature.properties.address + "<p><b>Rating:</b> " + feature.properties.rating_score + "<p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a>";
 				layer.bindPopup(feature.properties.name);
 				//Event listeners to open popup on hover and fill panel on click
 				layer.on({
@@ -444,7 +505,10 @@ function getData (map){
 				},
 				mouseout: function(){
 					this.closePopup();
-				}
+				},
+				click: function(){
+					$("#menu").html(menuContent);
+				}				
 				})
 			}
 		}).addTo(map);
