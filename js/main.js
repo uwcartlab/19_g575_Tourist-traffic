@@ -1,5 +1,25 @@
-﻿// Adding the base map
+﻿//// reference:
+//leaflet-panel-layers: https://labs.easyblog.it/maps/leaflet-panel-layers/
+//leaflet-search: https://labs.easyblog.it/maps/leaflet-search/
+
+
+// Adding the base map
 var basemap;
+
+/* //test
+$('#menu').append('<button class="apart" id="apart">apart</button>');
+$('#menu').append('<button class="house" id="house">house</button>');
+
+$('.apart').click(function(){
+	house.style.backgroundColor = 'red'
+});
+$('.house').click(function(){
+	apart.style.backgroundColor = 'green'
+}); */
+		
+
+
+
 
 //Begine function to create map
 function createMap(){
@@ -26,37 +46,7 @@ function createMap(){
 function getData (map){
 	$.getJSON("data/popular_POIs_AOIs_corrected.geojson",function(data){
 	
-    // Add GeoJSON layer to the map once the file is loaded
-		//create datalayer for all the POIs
-		var dataLayer = L.geoJson(data,{
-			
-			filter: function(feature, layer){
-				return(feature.properties.level === "-");
-			},			
-		// Change Leaflet default markers to circles
-			pointToLayer: function(feature, latlng) {
-				return new L.CircleMarker(latlng, {
-				  radius: 5,
-				  color: "red",
-				  weight: 1
-				});
-			  },
-			// Adding popup to POIs
-			onEachFeature:function(feature, layer){
-				layer.bindPopup(feature.properties.name);
-				//Event listeners to open popup on hover and fill panel on click
-				layer.on({
-				mouseover: function(){
-					this.openPopup();
-				},
-				mouseout: function(){
-					this.closePopup();
-				}
-			}).addTo(map);
-				console.log(feature.properties)
-			}
-		});
-		
+    // Add GeoJSON layer to the map once the file is loaded		
 		//create datalayer for 5A景区
 		var data_level_5A = L.geoJson(data, {
 			filter: function(feature, layer){
@@ -96,15 +86,6 @@ function getData (map){
 				})
 			}
 		}).addTo(map);
-
-		
-		//create filter by using leaflet default filter function
-		var overlayMaps = {
-			"PointOfInterest": dataLayer,
-			"5A景区": data_level_5A,
-			"4A景区": data_level_4A
-		};		
-		L.control.layers(null, overlayMaps).addTo(map);
 		
 		//create search operator
 		createSearchOperator(map, data);
@@ -117,6 +98,480 @@ function getData (map){
 		map.addLayer(markers);
 		markerCluster(map); */
 		
+		var data_L_Cate_FJMS = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.level === "-" && (feature.properties.medium_category === "风景名胜" || feature.properties.medium_category === "风景名胜相关"));
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);		
+		var data_L_Cate_GYGC = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.level === "-" && feature.properties.medium_category === "公园广场");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_BWG = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "博物馆" || feature.properties.medium_category === "科教文化场所");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_XX = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "学校");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_TSG = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "图书馆");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_MSG = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "美术馆");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_TWG = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "天文馆");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_XXCS = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "休闲场所");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_DJLYS = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "度假疗养场所");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_YDCG = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "运动场馆");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_YLCS = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "娱乐场所");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_TSSYJ = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "特色商业街");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_GWXGCS = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "购物相关场所");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+		var data_L_Cate_SC = L.geoJson(data, {
+			filter: function(feature, layer){
+				return(feature.properties.medium_category === "商场");
+			},
+		// Change Leaflet default markers to circles
+			pointToLayer: function(feature, latlng) {
+				return new L.CircleMarker(latlng, {
+				  radius: 5,
+				  color: "red",
+				  weight: 1
+				});
+			  },			
+			onEachFeature:function(feature, layer){
+				layer.bindPopup(feature.properties.name);
+				//Event listeners to open popup on hover and fill panel on click
+				layer.on({
+				mouseover: function(){
+					this.openPopup();
+				},
+				mouseout: function(){
+					this.closePopup();
+				}
+				})
+			}
+		}).addTo(map);
+
+		
+		var overLayers = [
+			{
+				group: "景区",
+				layers: [
+
+					{
+						avtive: true,
+						name: "5A景区",
+						layer: data_level_5A
+					},
+					{
+						avtive: true,
+						name: "4A景区",
+						layer: data_level_4A		
+					},
+				]
+			},
+			{
+				collapsed: true,
+				group: "风景名胜",
+				layers: [
+
+					{
+						avtive: true,
+						name: "风景名胜",
+						layer: data_L_Cate_FJMS
+					},
+					{
+						avtive: true,
+						name: "公园广场",
+						layer: data_L_Cate_GYGC		
+					},
+				]
+			},
+			{
+				collapsed: true,
+				group: "科教文化服务",
+				layers: [
+
+					{
+						avtive: true,
+						name: "博物馆",
+						layer: data_L_Cate_BWG
+					},
+					{
+						avtive: true,
+						name: "学校",
+						layer: data_L_Cate_XX	
+					},
+					{
+						avtive: true,
+						name: "图书馆",
+						layer: data_L_Cate_TSG	
+					},
+					{
+						avtive: true,
+						name: "美术馆",
+						layer: data_L_Cate_MSG	
+					},
+					{
+						avtive: true,
+						name: "天文馆",
+						layer: data_L_Cate_TWG	
+					},
+				]
+			},
+			{
+				collapsed: true,
+				group: "体育休闲服务",
+				layers: [
+
+					{
+						avtive: true,
+						name: "休闲场所",
+						layer: data_L_Cate_XXCS
+					},
+					{
+						avtive: true,
+						name: "度假疗养场所",
+						layer: data_L_Cate_DJLYS	
+					},
+					{
+						avtive: true,
+						name: "运动场馆",
+						layer: data_L_Cate_YDCG	
+					},
+					{
+						avtive: true,
+						name: "娱乐场所",
+						layer: data_L_Cate_YLCS
+					},
+				]
+			},
+			{
+				collapsed: true,
+				group: "购物服务",
+				layers: [
+
+					{
+						avtive: true,
+						name: "特色商业街",
+						layer: data_L_Cate_TSSYJ
+					},
+					{
+						avtive: true,
+						name: "购物相关场所",
+						layer: data_L_Cate_GWXGCS		
+					},
+					{
+						avtive: true,
+						name: "商场",
+						layer: data_L_Cate_SC		
+					},
+				]
+			}
+		];
+		var panelLayers = new L.Control.PanelLayers(null, overLayers,{
+			collapsibleGroups: true,
+			position: 'topright',
+			compact: true
+		});
+		map.addControl(panelLayers);
 	});
 };
 
