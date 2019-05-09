@@ -16,28 +16,44 @@
 		<link rel="stylesheet" href="lib/leaflet.markercluster/MarkerCluster.css">
 		<link rel="stylesheet" href="lib/leaflet.markercluster/MarkerCluster.Default.css">
 		<!--Main Style Sheet-->
-		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/style.css">
 		
 	</head>
 
 	<body>
 		<div id ='map'></div>
-		<div id='compare_window'>
+		<div id='ranking_window'>
 			<button class='back_to_menu'>
 				<img class='arrow' src='data/icon/left_arrow2.png'>&nbsp&nbsp&nbspBack To Menu
 			</button>
 			<div id='radio_group'>
-					<p><label><input type="radio" name="score" value="4.8">4.8</label>
-						&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.7">4.7</label>
-						&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.6">4.6</label>
-						&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.5">4.5</label>
-						&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.4">4.4</label>
-					</p>
-					<p><label><input type="radio" name="score" value="4.3">4.3</label>
-						&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.2">4.2</label>
-						&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.1">4.1</label>
-						&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.0">4.0</label>
-					</p>
+				<p><label><input><input type="radio" name="score" value="1-10">1-10</label></p>
+			</div>
+		</div>
+
+		<div id='compare_window'>
+			<button class='back_to_menu'>
+				<img class='arrow' src='data/icon/left_arrow2.png'>&nbsp&nbsp&nbspBack To Menu
+			</button>
+			<p> Click on the following radio buttons to retrieve scenic spots with the corresponding rating score</p>
+			<div id='radio_group'>
+				<p><label><input type="radio" name="score" value="0">Clear retrieve</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.8">4.8</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.7">4.7</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.6">4.6</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.5">4.5</label>
+				</p>
+				<p><label><input type="radio" name="score" value="4.4">4.4</label>
+					&nbsp&nbsp&nbsp&nbsp<input type="radio" name="score" value="4.3">4.3</label>
+					&nbsp&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.2">4.2</label>
+					&nbsp&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.1">4.1</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4">4.0</label>
+				</p>
+			</div>
+			<div>
+				<label>
+					<input type='checkbox' id='filterTT' name='show_TT' value='show_TT'>Hide tooltips of filtered scenic spots
+				</label>
 			</div>
 		</div>
 		<div id='menu'>
@@ -65,6 +81,6 @@
 		<script type="text/javascript" src="lib/leaflet-panel-layers/leaflet-panel-layers.js"></script>	
 		<script type="text/javascript" src="lib/leaflet.markercluster/leaflet.markercluster-src.js"></script>
 		<!--Main Script-->
-		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/main_2.js"></script>
 	</body>
 </html>
