@@ -31,6 +31,9 @@ var score_filter_polygons
 var rank_filter_points
 var rank_filter_polygons
 
+var metroLines
+var metroStops
+
 var ptLayer = {
 	radius: 6.5,
 	fillColor: "orange",
@@ -38,6 +41,13 @@ var ptLayer = {
 	weight: 2,
 	fillOpacity: 0.8
 }
+
+var metroIcon = L.Icon.extend({
+	options: {
+	iconSize: [12,12],
+	iconAnchor:   [6, 6]
+	}
+})
 
 $('#compare_window').hide()
 $('#ranking_window').hide()
@@ -63,7 +73,7 @@ function createMap(){
 		maxzoom:18
     });
 
-    //add OSM base tilelayer
+    //add OSM base tilelayer				var stopTT = '<div>' + feature.properties.nameStop + '<br>Line ' + feature.properties.nameLine_Abbrev + '</div>'
     var basemap =  L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
 	attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
     }).addTo(map);
@@ -74,6 +84,7 @@ function createMap(){
 	$('#menu').append("<br><button id='bus_routes'>Explore bus routes (N/A)</button>")
 
 	set_menuMap(map)
+	get_metroData(map)
 
 	$('#rating_score').on({
 		'click': function() {
@@ -89,8 +100,64 @@ function createMap(){
 	})
 };
 
+function get_metroData(map) {
+
+	$.getJSON("data/metroStops.geojson", function(data) {
+		metroStops = L.geoJson(data, {
+			pointToLayer: function(feature, latlng) {
+				var stopIcon = new metroIcon({iconUrl: 'img/metro_sign.png'})
+				//stopIcon.setOpacity(0.9)
+				return L.marker(latlng, {icon: stopIcon})
+			},
+			onEachFeature: function(feature, layer) {
+				var stopTT = '<div>' + feature.properties.nameStop + '<br>Line ' + feature.properties.nameLine_Abbrev + '</div>'
+				layer.bindTooltip(stopTT, {'direction': 'top', 'offset':new L.Point(0, -3)})
+			}
+		}).addTo(map)
+	})
+	$.getJSON("data/metroLines2.geojson", function(data) {
+
+		metroLines = L.geoJson(data, {
+			style: function(feature, layer){
+				console.log('features?',feature)
+				if (feature.properties.nameAbbrev == '1') {
+					return ({color:'#6dbfe8'})
+				}
+				if (feature.properties.nameAbbrev == '2') {
+					return ({color:'#da4a55'})
+				}
+				if (feature.properties.nameAbbrev == '3') {
+					return ({color: '#5ea459'})
+				}
+				if (feature.properties.nameAbbrev == '4') {
+					return ({color: '#9d5bd1'})
+				}
+				if (feature.properties.nameAbbrev == '10') {
+					return ({color: '#b49367'})
+				}
+				if (feature.properties.nameAbbrev == 's1') {
+					return ({color: '#3c9191'})
+				}
+				if (feature.properties.nameAbbrev == 's3') {
+					return ({color: '#e074bc'})
+				}
+				if (feature.properties.nameAbbrev == 's7') {
+					return ({color: '#e37b94'})
+				}
+				if (feature.properties.nameAbbrev == 's8') {
+					return ({color: '#c66b38'})
+				}
+				if (feature.properties.nameAbbrev == 's9') {
+					return ({color: '#f8ce44'})
+				}
+			}
+		}).addTo(map)
+		metroLines.bringToBack()
+	})
+}
+
 function set_menuMap(map) {
-	$.getJSON("data/popular_POIs_AOIs_corrected.geojson", function(data) {
+	$.getJSON("data/111_pois_aois_with_rating_count_ranking.geojson", function(data) {
 		menuMap_poi = L.geoJson(data, {
 			style: function() {
 				return ({'color': '#444444', 'fillColor': '#a5a5a5', 'fillOpacity': 0.8, 'weight': 1})
@@ -579,8 +646,12 @@ function createOverLayers(map) {
 
 //Begine function to load geoJson data file
 function getData1 (map){
-	map.removeLayer(menuMap_poi)
-	map.removeLayer(menuMap_aoi)
+	if (map.hasLayer(menuMap_poi)) {
+		map.removeLayer(menuMap_poi)
+	}
+	if (map.hasLayer(menuMap_aoi)) {
+		map.removeLayer(menuMap_aoi)
+	}
 	$('.back_to_menu').on({
 		click: function() {
 			// remove all layers added in the "compare" functionality, and load default overview, non-interactive map on the menu
@@ -705,8 +776,12 @@ function getData1 (map){
 };
 
 function getData2 (map){
-	map.removeLayer(menuMap_poi)
-	map.removeLayer(menuMap_aoi)
+	if (map.hasLayer(menuMap_poi)) {
+		map.removeLayer(menuMap_poi)
+	}
+	if (map.hasLayer(menuMap_aoi)) {
+		map.removeLayer(menuMap_aoi)
+	}
 	$('.back_to_menu').on({
 		click: function() {
 			// remove all layers added in the "compare" functionality, and load default overview, non-interactive map on the menu
