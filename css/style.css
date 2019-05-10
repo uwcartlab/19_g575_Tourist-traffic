@@ -26,49 +26,79 @@ body {
 }
 
 #map {
-	height: 100%;
+	height: 128%;
 	width: 71%;
 	float: right;
 	border: -2px solid #f4f0e7;
-    	box-shadow: -1px -1px 6px maroon;
+    box-shadow: -1px -1px 6px maroon;
 	border-radius:1px;
 	z-index: 20;
 }
 
 #rating_score {
 	position: absolute;
-	margin-top: -5%;
-	margin-left: 6px;
-	text-align: center;
-	font-size: 16px;
-	background-color: #4CAF50;
-	display: inline-block;
-	padding: 15px 15px;
-	line-height: 18px
+	top:450px;
+	background-color:#f4f0e7;
+	color: blue;
+	font-family: calibri;
+	font-size: 18px;
+	font-weight:800;
+	padding: 10px;
+	height: 60px;
+	width: 280px;
+	text-transform: capitalize;
+	border-radius: 3px;
+	box-shadow: 0px 10px 0px #009933, 0px 0px 5px rgba(0,0,0,.5);
+	margin: 10px auto;
+	border-color: red;
+	border-width: 8px;
+	border-radius: 50px 80px 90px 90px;
+	padding: 10px;
+	cursor:pointer;
 }
 
 #rating_count {
 	position: absolute;
-	margin-top: 10%;
-	margin-left: 6px;
-	text-align: center;
-	font-size: 16px;
-	background-color: #4CAF50;
-	display: inline-block;
-	padding: 15px 15px;
-	line-height: 18px
+	top:530px;
+	background-color:#f4f0e7;
+	color: blue;
+	font-family: calibri;
+	font-size: 18px;
+	font-weight:800;
+	padding: 10px;
+	height: 60px;
+	width: 280px;
+	text-transform: capitalize;
+	border-radius: 3px;
+	box-shadow: 0px 10px 0px #009933, 0px 0px 5px rgba(0,0,0,.5);
+	margin: 10px auto;
+	border-color: red;
+	border-width: 8px;
+	border-radius: 50px 80px 90px 90px;
+	padding: 10px;
+	cursor:pointer;
 }
 
 #bus_routes {
 	position: absolute;
-	margin-top: 25%;
-	margin-left: 6px;
-	text-align: center;
-	font-size: 16px;
-	background-color: #aaaaaa;
-	display: inline-block;
-	padding: 15px 8px;
-	line-height: 18px
+	top:610px;
+	background-color:#f4f0e7;
+	color: blue;
+	font-family: calibri;
+	font-size: 18px;
+	font-weight:800;
+	padding: 10px;
+	height: 72px;
+	width: 280px;
+	text-transform: capitalize;
+	border-radius: 3px;
+	box-shadow: 0px 5px 0px #009933, 0px 0px 5px rgba(0,0,0,.5);
+	margin: 10px auto;
+	border-color: red;
+	border-width: 8px;
+	border-radius: 50px 80px 90px 90px;
+	padding: 10px;
+	cursor:pointer;
 }
 
 .back_to_menu {
@@ -82,13 +112,13 @@ body {
 #menu {
 	position: absolute;
 	width: 27%;
-	height: 97%;
+	height: 124%;
 	border-left:5px solid #f4f0e7;
 	border-right:5px solid #f4f0e7;
 	display: inline-block;
 	vertical-align:top;
 	text-align:justify;
-    	box-shadow: -1px -1px 6px maroon;
+    box-shadow: -1px -1px 6px maroon;
 	border-radius:0px;
 	z-index: 20;
 	background:#f4f0e7;
