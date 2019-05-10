@@ -160,7 +160,7 @@ function set_menuMap(map) {
 	$.getJSON("data/111_pois_aois_with_rating_count_ranking.geojson", function(data) {
 		menuMap_poi = L.geoJson(data, {
 			style: function() {
-				return ({'color': '#444444', 'fillColor': '#a5a5a5', 'fillOpacity': 0.8, 'weight': 1})
+				return ({'color': '#444444', 'fillColor': '#a5a5a5', 'fillOpacity': 0.7, 'weight': 1})
 			},
 			filter: function(feature){
 				return(feature.properties.level === "4A景区" || feature.properties.level === "5A景区");
@@ -176,7 +176,7 @@ function set_menuMap(map) {
 		}).addTo(map)
 		menuMap_aoi = L.geoJson(data, {
 			style: function() {
-				return ({'color': '#444444', 'fillColor': '#777777', 'fillOpacity': 0.8, 'weight': 1})
+				return ({'color': '#444444', 'fillColor': '#777777', 'fillOpacity': 0.7, 'weight': 1})
 			},
 			filter: function(feature) {
 				return (feature.properties.level !== "4A景区" && feature.properties.level !== "5A景区")
