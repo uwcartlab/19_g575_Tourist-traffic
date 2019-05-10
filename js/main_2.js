@@ -28,7 +28,8 @@ var panelLayers
 var searchControl
 var score_filter_points
 var score_filter_polygons
-
+var rank_filter_points
+var rank_filter_polygons
 
 var ptLayer = {
 	radius: 6.5,
@@ -718,37 +719,84 @@ function getData2 (map){
 			map.removeLayer(data_L_Cate_GWXGCS)
 			map.removeLayer(data_L_Cate_TSSYJ)
 			map.removeLayer(data_L_Cate_SC)
-
-			map.removeLayer(score_filter_points)
-			map.removeLayer(score_filter_polygons)
+			console.log('suc')
+			map.removeLayer(rank_filter_points)
+			map.removeLayer(rank_filter_polygons)
 		}
 	})
 	$.getJSON("data/111_pois_aois_with_rating_count_ranking.geojson",function(data) {
 	
     // Add GeoJSON layer to the map once the file is loaded		
 		loadTA(data, map)
-		// Rating score filter
-		$("input[name='score']").click(function(){
-			$('#filterTT').prop('checked', false);
+		// Rating rank filter
+		$("input[name='rank']").click(function(){
+			$('#filterYY').prop('checked', false);
 
-			if (map.hasLayer(score_filter_polygons)) {
-				score_filter_polygons.clearLayers()
+			if (map.hasLayer(rank_filter_polygons)) {
+				rank_filter_polygons.clearLayers()
 			}
-			if (map.hasLayer(score_filter_points)) {
-				score_filter_points.clearLayers()
+			if (map.hasLayer(rank_filter_points)) {
+				rank_filter_points.clearLayers()
 			}
-			var radioValue = parseFloat($("input[name='score']:checked").val());
-			console.log('value?',radioValue)
-			score_filter = L.geoJson(data, {
+			var radioValue =($("input[name='rank']:checked").val());
+			//console.log('value?',radioValue)
+			rank_filter = L.geoJson(data, {
 				onEachFeature: function(feature, layer) {
 					layer.unbindTooltip()
 				}
 			})
 			if (radioValue != 0) {
-				score_filter_points = L.geoJson(data, {
+				if (radioValue == '1-10') {
+					i = 1
+					h = 10
+				};
+				if (radioValue == '11-20') {
+					i = 11
+					h = 20
+				};
+				if (radioValue == '21-30') {
+					i = 21
+					h = 30
+				};
+				if (radioValue == '31-40') {
+					i = 31
+					h = 40
+				};
+				if (radioValue == '41-50') {
+					i = 41
+					h = 50
+				};
+				if (radioValue == '51-60') {
+					i = 51
+					h = 60
+				};
+				if (radioValue == '61-70') {
+					i = 61
+					h = 70
+				};
+				if (radioValue == '71-80') {
+					i = 71
+					h = 80
+				};
+				if (radioValue == '81-90') {
+					i = 81
+					h = 90
+				};
+				if (radioValue == '91-100') {
+					i = 91
+					h = 100
+				};
+				if (radioValue == '101-110') {
+					i = 101
+					h = 110
+				};
+				if (radioValue == '111') {
+					i = 111
+					h = 111
+				};				
+				rank_filter_points = L.geoJson(data, {
 					filter: function(feature) {
-						console.log(feature.properties.rating_score, radioValue)
-						return(feature.properties.rating_score == radioValue && feature.geometry.type == 'Point')
+						return(feature.properties.rating_count_rank >= i && feature.properties.rating_count_rank <= h && feature.geometry.type == 'Point')
 					},
 					pointToLayer: function(feature, latlng) {
 						return L.circleMarker(latlng, {
@@ -760,10 +808,10 @@ function getData2 (map){
 						})
 					},
 					onEachFeature: function(feature, layer) {
-						var tooltipContent = '<div>' + feature.properties.name + '</div>'
+						var tooltipContent = '<div>Rank: ' + feature.properties.rating_count_rank + '</div>' + feature.properties.name + '</div>' + '<div>Rating Score: ' + feature.properties.rating_score + '<div>Rating Count: ' + feature.properties.rating_count
 						layer.bindTooltip(tooltipContent, {'permanent':true, 'direction':'top','opacity':'0.85', 'offset':new L.Point(0, -5)})
 
-						$('#filterTT').change(function() {
+						$('#filterYY').change(function() {
 							if (this.checked) {
 								layer.unbindTooltip()
 							} else {
@@ -775,26 +823,26 @@ function getData2 (map){
 							highlight_filtered_points(feature, layer, map)
 						}
 					}
-				}).addTo(map)
+				}).addTo(map)		
 
-				score_filter_polygons = L.geoJson(data, {
+				rank_filter_polygons = L.geoJson(data, {
 					filter: function(feature) {
-						console.log(feature.properties.rating_score, radioValue)
-						return(feature.properties.rating_score == radioValue && feature.geometry.type == 'Polygon')
+						//console.log(feature.properties.rating_count_rank, radioValue)
+						return(feature.properties.rating_count_rank >= i && feature.properties.rating_count_rank <= h && feature.geometry.type == 'Polygon')
 					},
 					style: function() {
 						return ({
 							fillColor: 'blue',
-							fillOpacity: 0.7,
+							fillOpacity: 0.9,
 						})	
 					},
 					onEachFeature: function(feature, layer) {
-						var tooltipContent = '<div>' + feature.properties.name + '</div>'
-						console.log("CHECKING filter")
+						var tooltipContent = '<div>Rank: ' + feature.properties.rating_count_rank + '</div>' + feature.properties.name + '</div>' + '<div>Rating Score: ' + feature.properties.rating_score + '<div>Rating Count: ' + feature.properties.rating_count
+						//console.log("CHECKING filter")
 
 						layer.bindTooltip(tooltipContent, {'permanent':true, 'direction':'top','opacity':'0.85', 'offset':new L.Point(0, -5)})
 
-						$('#filterTT').change(function() {
+						$('#filterYY').change(function() {
 							if (this.checked) {
 								layer.unbindTooltip()
 							} else {
@@ -807,7 +855,8 @@ function getData2 (map){
 						}
 					}
 				}).addTo(map)
-				score_filter_polygons.bringToBack()
+					
+				rank_filter_polygons.bringToBack()				
 			}
 		})
 		createOverLayers(map)

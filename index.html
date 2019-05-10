@@ -26,13 +26,35 @@
 			<button class='back_to_menu'>
 				<img class='arrow' src='img/left_arrow2.png'alt><p0>Back To Menu<p0>
 			</button>
+			<br>
+			<br>
+			<br>
+			<br>
+			
+			<p> Click on the following radio buttons to retrieve scenic spots with the corresponding popularity rank (based on rating counts)</p>
+			
 			<div id='radio_group'>
-				<br>
-				<br>
-				<br>
-				<br>
-
-				<p><label><input><input type="radio" name="score" value="1-10">1-10</label></p>
+				<p><label><input type="radio" name="rank" value="0">Clear retrieve</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="rank" value="1-10">1-10</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="rank" value="11-20">11-20</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="rank" value="21-30">21-30</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="rank" value="31-40">31-40</label>
+				</p>
+				<p><label><input type="radio" name="rank" value="41-50">41-50</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="rank" value="51-60">51-60</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="rank" value="61-70">61-70</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="rank" value="71-80">71-80</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="rank" value="81-90">81-90</label>
+				</p>
+				<p><label><input type="radio" name="rank" value="91-100">91-100</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="rank" value="101-110">101-110</label>
+					&nbsp&nbsp&nbsp<label><input type="radio" name="rank" value="111">111</label>
+				</p>
+			</div>
+			<div>
+				<label>
+					<input type='checkbox' id='filterYY' name='show_YY' value='show_YY'>Hide tooltips of filtered scenic spots
+				</label>
 			</div>
 		</div>
 
@@ -46,6 +68,7 @@
 			<br>
 			
 			<p> Click on the following radio buttons to retrieve scenic spots with the corresponding rating score</p>
+			
 			<div id='radio_group'>
 				<p><label><input type="radio" name="score" value="0">Clear retrieve</label>
 					&nbsp&nbsp&nbsp<label><input type="radio" name="score" value="4.8">4.8</label>
