@@ -70,7 +70,7 @@ function createMap(){
 	$('#menu').append("<br><button id='rating_score'>Compare by rating score</button>")
 	$('#menu').append("<br><button id='rating_count'>Compare by rating count</button>")
 
-	$('#menu').append("<br><button id='bus_routes'>Explore bus routes (now unavailable)</button>")
+	$('#menu').append("<br><button id='bus_routes'>Explore bus routes (N/A)</button>")
 
 	set_menuMap(map)
 
