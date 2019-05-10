@@ -77,13 +77,13 @@ function createMap(){
 
 	$('#rating_score').on({
 		'click': function() {
-			set_compare_window()
+			set_compare_window()				
 			getData1(map);
 		}
 	})
 	$('#rating_count').on({
 		'click': function() {
-			set_ranking_window()
+			set_ranking_window()				
 			getData2(map);
 		}
 	})
@@ -130,19 +130,21 @@ function set_menuMap(map) {
 function set_compare_window() {
 	$('#menu').hide()
 	$('#compare_window').show()
-	$('.back_to_menu').off('click')
+	$('.back_to_menu').off('click')	
 }
 
 function set_ranking_window() {
 	$('#menu').hide()
 	$('#ranking_window').show()
-	$('.back_to_menu').off('click')
+	$('.back_to_menu').off('click')		
 }
 
 //End function create map
 
 function highlightPoints(feature, layer, map) {
 	var menuContent = "<div id='menu_content'><p><b>Name:</b> " + feature.properties.name + '</p><p><b>Type:</b> ' + feature.properties.medium_category + "</p><p><b>Address:</b> " + feature.properties.address + "</p><p><b>Rating score:</b> " + feature.properties.rating_score + "</p><p><b>Rating count:</b> " + feature.properties.rating_count + " ratings</p><p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a></p></div>";
+	var manuContent = "<div id='manu_content'><p><b>Name:</b> " + feature.properties.name + '</p><p><b>Type:</b> ' + feature.properties.medium_category + "</p><p><b>Address:</b> " + feature.properties.address + "</p><p><b>Rating score:</b> " + feature.properties.rating_score + "</p><p><b>Rating count:</b> " + feature.properties.rating_count + " ratings</p><p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a></p></div>";
+
 	layer.bindPopup('<div style="text-align: left; line-height: 28px">Name: ' + feature.properties.name + '<br>Type: ' + feature.properties.medium_category + '</div>');
 	//Event listeners to open popup on hover and fill panel on click
 	layer.on({
@@ -164,8 +166,9 @@ function highlightPoints(feature, layer, map) {
 		},*/
 		click: function(){
 			$('#menu_content').remove()
-			$("#compare_window").append(menuContent);
-
+			$("#compare_window").append(menuContent)
+			$('#manu_content').remove()			
+			$("#ranking_window").append(manuContent)
 			//$("#menu").html(menuContent);
 		}				
 	})
@@ -173,6 +176,8 @@ function highlightPoints(feature, layer, map) {
 
 function highlight_filtered_points(feature, layer, map) {
 	var menuContent = "<div id='menu_content'><p><b>Name:</b> " + feature.properties.name + '</p><p><b>Type:</b> ' + feature.properties.medium_category + "</p><p><b>Address:</b> " + feature.properties.address + "</p><p><b>Rating score:</b> " + feature.properties.rating_score + "</p><p><b>Rating count:</b> " + feature.properties.rating_count + " ratings</p><p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a></p></div>";
+	var manuContent = "<div id='manu_content'><p><b>Name:</b> " + feature.properties.name + '</p><p><b>Type:</b> ' + feature.properties.medium_category + "</p><p><b>Address:</b> " + feature.properties.address + "</p><p><b>Rating score:</b> " + feature.properties.rating_score + "</p><p><b>Rating count:</b> " + feature.properties.rating_count + " ratings</p><p><b>Website:</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a></p></div>";
+	
 	layer.bindPopup('<div style="text-align: left; line-height: 28px">Name: ' + feature.properties.name + '<br>Type: ' + feature.properties.medium_category + '</div>');
 	//Event listeners to open popup on hover and fill panel on click
 	layer.on({
@@ -194,8 +199,9 @@ function highlight_filtered_points(feature, layer, map) {
 		},*/
 		click: function(){
 			$('#menu_content').remove()
-			$("#compare_window").append(menuContent);
-
+			$("#compare_window").append(menuContent)
+			$('#manu_content').remove()			
+			$("#ranking_window").append(manuContent)
 			//$("#menu").html(menuContent);
 		}				
 	})
@@ -203,6 +209,7 @@ function highlight_filtered_points(feature, layer, map) {
 
 function highlightPolygons(feature, layer, map) {
 	var menuContent = "<div id='menu_content'><p><b>Name:</b> " + feature.properties.name + '</p><p><b>Type:</b> ' + feature.properties.medium_category + "</p><p><b>Address:</b> " + feature.properties.address + "</p><p><b>Rating score:</b> " + feature.properties.rating_score + "</p><p><b>Rating count:</b> " + feature.properties.rating_count + " ratings</p><p><b>Website</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a></p></div>";
+	var manuContent = "<div id='manu_content'><p><b>Name:</b> " + feature.properties.name + '</p><p><b>Type:</b> ' + feature.properties.medium_category + "</p><p><b>Address:</b> " + feature.properties.address + "</p><p><b>Rating score:</b> " + feature.properties.rating_score + "</p><p><b>Rating count:</b> " + feature.properties.rating_count + " ratings</p><p><b>Website</b> " + "<a href=" + feature.properties.url + ">" + feature.properties.url + "</a></p></div>";
 
 	layer.bindPopup('<div style="text-align: left; line-height: 28px">Name: ' + feature.properties.name + '<br>Type: ' + feature.properties.medium_category + '</div>');
 	layer.on({
@@ -218,7 +225,9 @@ function highlightPolygons(feature, layer, map) {
 		},
 		click: function(){
 			$('#menu_content').remove()
-			$("#compare_window").append(menuContent);
+			$("#compare_window").append(menuContent)
+			$('#manu_content').remove()			
+			$("#ranking_window").append(manuContent)			
 		}
 	})
 }
@@ -240,7 +249,9 @@ function highlight_filtered_polygons(feature, layer, map) {
 		},
 		click: function(){
 			$('#menu_content').remove()
-			$("#compare_window").append(menuContent);
+			$("#compare_window").append(menuContent)
+			$('#manu_content').remove()			
+			$("#ranking_window").append(manuContent)		
 		}
 	})
 }
@@ -578,6 +589,8 @@ function getData1 (map){
 			set_menuMap(map)
 			$('#menu').show()
 			$('#compare_window').hide()
+			$('#menu_content').remove()	
+			$('#manu_content').remove()				
 			map.removeLayer(data_level_5A)
 			map.removeLayer(data_level_4A)
 			map.removeLayer(data_L_Cate_FJMS)
@@ -702,6 +715,8 @@ function getData2 (map){
 			set_menuMap(map)
 			$('#menu').show()
 			$('#ranking_window').hide()
+			$('#manu_content').remove()	
+			$('#menu_content').remove()				
 			map.removeLayer(data_level_5A)
 			map.removeLayer(data_level_4A)
 			map.removeLayer(data_L_Cate_FJMS)
